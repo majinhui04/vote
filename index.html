@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>十佳民警评选</title>
+    <link rel="stylesheet" href="./style/idangerous.swiper.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <script src="./js/idangerous.swiper.min.js"></script>
+    <style>
+    body,html {
+        margin:0;
+        padding: 0;
+        height: 100%;
+    }
+    body {
+        font-family: '微软雅黑';
+        background-color: #d83241;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .clearfix:after{
+        display: block;
+        clear: both;
+        content: 'xxxxx';
+        height: 0;
+        line-height: 0;
+        overflow: hidden;
+    }
+    .swiper-container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 640px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        -webkit-transition-property: -webkit-transform, left, top;
+        -webkit-transition-duration: 0s;
+        -webkit-transform: translate3d(0px,0,0);
+        -webkit-transition-timing-function: ease;
+        -moz-transition-property: -moz-transform, left, top;
+        -moz-transition-duration: 0s;
+        -moz-transform: translate3d(0px,0,0);
+        -moz-transition-timing-function: ease;
+        -o-transition-property: -o-transform, left, top;
+        -o-transition-duration: 0s;
+        -o-transform: translate3d(0px,0,0);
+        -o-transition-timing-function: ease;
+        -o-transform: translate(0px,0px);
+        -ms-transition-property: -ms-transform, left, top;
+        -ms-transition-duration: 0s;
+        -ms-transform: translate3d(0px,0,0);
+        -ms-transition-timing-function: ease;
+        transition-property: transform, left, top;
+        transition-duration: 0s;
+        transform: translate3d(0px,0,0);
+        transition-timing-function: ease;
+    }
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .swiper-slide-active .headline {
+        -webkit-animation: headline-1 0.5s;
+        -webkit-animation-fill-mode: forwards;
+        -webkit-animation-delay:0.5;
+    }
+    .headline {
+        opacity: 0;
+        margin-left: -50px;
+        overflow: hidden;
+        font-size: 18px;
+        font-weight: bold;
+        height: 40px;
+        line-height: 40px;
+        color: #FFF;
+        text-indent: 20px;
+        background-color: #a72006;
+    }
+    .headline .name{
+        margin-left:7px;
+    }
+    .info {
+        background-color: #ffdbcf;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+    .love {
+        color: #d73240;
+        float: right;
+        padding: 0 10px;
+        font-weight: bold;
+    }
+    .content {
+        width: 190px;
+        height: 190px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+    @media screen and (min-width: 360px) {
+      .content {
+            width: 200px;
+            height: 200px;
+            margin-top: 35px;
+      }
+    }
+    .content img{
+        width: 100%;
+        height: 100%;
+    }
+    .footer{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    .detail{
+        position: relative;
+        height: 100px;
+        background-color: #b3563e;
+        color: #fff;
+
+    }
+    .swiper-slide-active .detail .swiper-wrapper{
+        -webkit-animation:detailTxt 0.5s;
+        -webkit-animation-delay: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+    }
+    .swiper-slide-visible {
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    .swiper-slide-active.swiper-slide-visible {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    .detail .swiper-wrapper {
+        opacity: 0; 
+        width: 98%;
+        margin: 0 auto;
+        padding-top: 5px;
+        height: 85px;
+        font-size: 12px;
+    }
+    .detail .pagination {
+        position: absolute;
+        left: 0;
+        text-align: center;
+        bottom: 5px;
+        width: 100%;
+    }
+    .detail .swiper-slide {
+       
+    }
+   
+    .avatar {
+        border: 1px solid #91c6f9;
+        border-radius: 100px;
+        width: 100%;
+        height: 100%;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+    }
+    .left {
+        float: left;
+    }
+
+    /* 民警列表 */
+    .policeman-wrapper {
+        width: 98%;
+        margin: 0 auto;
+        padding-top: 15px; 
+    }
+    @media screen and (min-width: 360px) {
+      .policeman-wrapper {
+            padding-top: 35px;
+      }
+    }
+    .policeman-item {
+        overflow: hidden;
+        
+    }
+    .policeman-column {
+        height: 30px;
+        line-height: 30px;
+        color: #FFF;
+        text-align: center;
+        float: left;
+        display: block;
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        overflow: hidden;
+    }
+    .policeman-footer .policeman-column {
+        border-bottom: none;
+    }
+    .policeman-column:last-child{
+        border-right:none;
+    }
+    .policeman-column-rank {
+        width: 15%;
+    }
+    .policeman-column-name {
+        width: 20%;
+    }
+    .policeman-column-duty {
+        width: 48%;
+    }
+    .policeman-column-age {
+        width: 15%;
+    }
+
+    /* 封面 */
+    .policeman-cover {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: url(./images/cover-bg.jpg) no-repeat 0 0 ;
+        background-size: 100% 100%;
+    }
+    .swiper-slide-active .cover-title {
+        -webkit-animation: cover_title 1s;
+    }
+    .cover-title {
+        -webkit-transform:scale(1);
+        padding-top: 100px;
+        width: 235px;
+        margin: 0 auto;
+    }
+    .cover-title img  {
+        width: 100%;
+    }
+    .cover-host {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 62px;
+        text-align: center;
+        color: #FFF;
+    }
+    .cover-host .cover-host-name {
+        text-align: left;
+    }
+    .cover-host span {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .cover-logo {
+        height: 30px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 10px;
+        text-align: center;
+        color: #FFF;
+        background: url(./images/cover-logo.png) no-repeat center center;
+        background-size: 200px 17px;
+    }
+    .swiper-slide-active .heart {
+        -webkit-animation: heart_big 1.5s;
+        -wbkit-animation-delay:0.5s;
+    }
+    .heart {
+        margin-top: 7px;
+        margin-right: 5px;
+        display: inline-block;
+        vertical-align: top;
+        width: 25px;
+        height: 25px;
+        background: url(./images/heart-empty.png) no-repeat 0 0;
+        background-size: 25px 22px;
+    }
+    .heart-select.heart {
+        background: url(./images/heart.png) no-repeat 0 0;
+        background-size: 25px 22px;
+    }
+
+    .arrow {
+        display: inline-block;
+        width: 16px;
+        height: 15px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        margin-left: -8px;
+        background: url(./images/arrow.png) no-repeat 0 0;
+        background-size: 16px auto;
+        -webkit-animation: arrow 1.5s infinite 0s; 
+        opacity: 0;
+        
+    }
+    .detail-txt {
+        display: none;
+    }
+    @-webkit-keyframes headline-1 {
+        from { opacity: 0; margin-left: -50px;}
+        to { opacity: 100; margin-left: 0;}
+    }
+
+    @-webkit-keyframes arrow {
+        0% {
+            -webkit-transform: translate3d(0, 62px, 0);
+            opacity: 0
+        }
+        60% {
+            -webkit-transform: translate3d(0, 12px, 0);
+            opacity: 1
+        }
+        100% {
+            -webkit-transform: translate3d(0, 0, 0);
+            opacity: 0
+        }
+    }
+    @-webkit-keyframes cover_title {
+        from {
+            opacity: 0;
+            -webkit-transform:scale(100);
+        }
+        to {
+            opacity: 1;
+            -webkit-transform:scale(1);
+        }
+    }
+    @-webkit-keyframes heart_big {
+        0% {
+            -webkit-transform:scale(1);
+        }
+        60% {
+            -webkit-transform:scale(1.5);
+        }
+        100% {
+            -webkit-transform:scale(1);
+        }
+    }
+
+    @-webkit-keyframes detailTxt
+    {
+        0% { opacity: 0;}
+        100% { opacity: 100;}
+    }
+    .swiper-pagination-switch.swiper-active-switch {
+        background: #fff;
+    }
+    .swiper-pagination-switch {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: #999;
+        box-shadow: 0px 1px 2px #555 inset;
+        margin: 0 3px;
+        cursor: pointer;
+    }
+    .nav {
+        position: fixed;
+        right: 10px;
+        top: 60px;
+        opacity: 0;
+        z-index: 1000;
+    }
+    .nav-item {
+        box-sizing:border-box;
+        padding-top: 5px;
+        text-align: center;
+        color: #FFF;
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: rgba(0,0,0,0.6);
+        margin-bottom: 7px;
+
+    }
+    .nav-item em {
+        font-style: normal;
+    }
+    .nav-item span {
+        display: block;
+    }
+    #vote-confirm,#back {
+        cursor: pointer;
+        background-color: #6f95c8;
+    }
+    </style>
+</head>
+<body>
+    <div class="nav" id="nav">
+        <div class="nav-item" id="vote-info">
+            <span>已选</span>
+            <span><em class="vote-select">0</em>/10</span>
+        </div>
+        <div class="nav-item" id="back">
+            <span>返回</span>
+            <span>目录</span>
+        </div>
+        <div class="nav-item" id="vote-confirm">
+            <span>确认</span>
+            <span>投票</span>
+        </div>
+    </div>
+    <div class="swiper-container container" id="container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="policeman-cover">
+                    <div class="cover-title">
+                        <img src="./images/cover-title.png" alt="">
+                    </div>
+                    <div class="cover-host">
+                        <span>主办单位:</span>
+                        <span class="cover-host-name">杭州市公安局警察协会<br/>钱江晚报</span>
+                    </div>
+                    <div class="cover-logo">
+                        
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+            <!-- 名单第1到10位 -->
+            <div class="swiper-slide">
+
+                <div class="policeman-wrapper">
+                    <div class="policeman-header policeman-item">
+                        <span class="policeman-column policeman-column-rank">排名</span>
+                        <span class="policeman-column policeman-column-name">姓名</span>
+                        <span class="policeman-column policeman-column-duty">职务</span>
+                        <span class="policeman-column policeman-column-age">年龄</span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">1</span>
+                        <span class="policeman-column policeman-column-name">刘德华</span>
+                        <span class="policeman-column policeman-column-duty">西湖区警局交通指挥</span>
+                        <span class="policeman-column policeman-column-age">53</span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">2</span>
+                        <span class="policeman-column policeman-column-name">林志颖</span>
+                        <span class="policeman-column policeman-column-duty">西湖区警局交通指挥</span>
+                        <span class="policeman-column policeman-column-age">40</span>
+                    </div>
+                   
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">3</span>
+                        <span class="policeman-column policeman-column-name">汪东城</span>
+                        <span class="policeman-column policeman-column-duty">西湖区警局交通指挥</span>
+                        <span class="policeman-column policeman-column-age">44</span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">4</span>
+                        <span class="policeman-column policeman-column-name">黄家驹</span>
+                        <span class="policeman-column policeman-column-duty">西湖区警局交通指挥</span>
+                        <span class="policeman-column policeman-column-age">44</span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">5</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">6</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">7</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">8</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">9</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">10</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-footer policeman-item" style="text-align:center;color:#FFF;line-height:30px;">
+                        注:点击任一行可以跳转到相应信息
+                    </div>
+                </div>       
+            </div>
+            <!-- 名单第11到20位 -->
+            <div class="swiper-slide">
+                <div class="policeman-wrapper">
+                    
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">11</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">12</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                   
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">13</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">14</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">15</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">16</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">17</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">18</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">19</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">20</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-footer policeman-item">
+                        <span class="policeman-column policeman-column-rank"></span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- 名单第21到30位 -->
+            <div class="swiper-slide">
+                <div class="policeman-wrapper">
+                    
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">21</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">22</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                   
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">23</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">24</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">25</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">26</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">27</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">28</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">29</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-item policeman">
+                        <span class="policeman-column policeman-column-rank">30</span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                    <div class="policeman-footer policeman-item">
+                        <span class="policeman-column policeman-column-rank"></span>
+                        <span class="policeman-column policeman-column-name"></span>
+                        <span class="policeman-column policeman-column-duty"></span>
+                        <span class="policeman-column policeman-column-age"></span>
+                    </div>
+                </div>
+            </div>
+            <!--遍历详细信息-->
+            <div class="swiper-slide policeman-info">
+                <div class="headline">
+                    <span class="number">1.</span><span class="name">刘德华</span>
+                </div>
+                <div class="content">
+                    <div class="avatar" style="background-image: url(./images/1.jpg);">
+                        
+                    </div>
+                    
+                </div>
+                <div class="footer">
+                    <div class="info">
+                        <span class="left">
+                            <span class="place">杭州市西湖区公安局</span>
+                            <span class="age">44</span>
+                        </span>
+                            
+                        <span class="love">
+                            <!-- <span class="count">1</span>/<span class="total">10</span> -->
+                            <span class="heart"></span>支持我
+
+                        </span>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-txt">
+                            刘德华，男，1961年9月生于香港，演员、歌手、词作人、制片人，影视歌多栖发展的代表艺人之一，也是位有使命感的电影人。1981年以全优成绩毕业于TVB艺训班签约出道，1982年凭《猎鹰》大红，名列“无线五虎”；1983年主演《神雕侠侣》在香港创62点收视纪录.
+                        </div>
+                        <div class="swiper-wrapper">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="swiper-slide policeman-info">
+                <div class="headline">
+                    <span class="number">2.</span><span class="name">林志颖</span>
+                </div>
+                <div class="content">
+                    <div class="avatar" style="background-image: url(./images/2.jpg);">
+                        
+                    </div>
+                    
+                </div>
+                <div class="footer">
+                    <div class="info">
+                        <span class="left">
+                            <span class="place">杭州市西湖区公安局</span>
+                            <span class="age">40</span>
+                        </span>
+                            
+                        <span class="love">
+                            <!-- <span class="count">1</span>/<span class="total">10</span> -->
+                            <span class="heart"></span>支持我
+                        </span>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-txt">
+                            林志颖（Jimmy Lin），中国台湾男演员、歌手及赛车手。1974年10月15日生于台湾，自1992年2月28日出道后迅速走红，被称为“亚洲小旋风”。其后发表多张唱片并出演多部影视剧作品，亦是台湾第一位授薪职业赛车手和一位成功的企业家，活跃于各个领域。先后出演过《绝代双骄》《天龙八部》《放羊的星星》等多部热播剧，发行了《去走走》《挡不住我》等个人国语专辑
+                        </div>
+                        <div class="swiper-wrapper">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="swiper-slide policeman-info">
+                <div class="headline">
+                    <span class="number">3.</span><span class="name">汪东城</span>
+                </div>
+                <div class="content">
+                    <div class="avatar" style="background-image: url(./images/3.jpg);">
+                        
+                    </div>
+                    
+                </div>
+                <div class="footer">
+                    <div class="info">
+                        <span class="left">
+                            <span class="place">杭州市西湖区公安局</span>
+                            <span class="age">40</span>
+                        </span>
+                            
+                        <span class="love">
+                            <!-- <span class="count">1</span>/<span class="total">10</span> -->
+                            <span class="heart"></span>支持我
+                        </span>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-txt">
+                            汪东城，常被称为大东，1981年8月24日出生于台北市，中国台湾男歌手、演员，中国台湾男子团体飞轮海成员
+                        </div>
+                        <div class="swiper-wrapper">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="swiper-slide policeman-info">
+                <div class="headline">
+                    <span class="number">4.</span><span class="name">黄家驹</span>
+                </div>
+                <div class="content">
+                    <div class="avatar" style="background-image: url(./images/4.jpg);">
+                        
+                    </div>
+                    
+                </div>
+                <div class="footer">
+                    <div class="info">
+                        <span class="left">
+                            <span class="place">杭州市西湖区公安局</span>
+                            <span class="age">40</span>
+                        </span>
+                            
+                        <span class="love">
+                            <!-- <span class="count">1</span>/<span class="total">10</span> -->
+                            <span class="heart"></span>支持我
+                        </span>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-txt">
+                            黄家驹（Ka Kui Wong），1962年6月10日出生于香港。中国男歌手、原创音乐人、吉他手。华语乐队Beyond的主唱及创队成员。黄家驹有独特的沙哑嗓音，对尾音的颤抖式处理成为他的标志。
+                        </div>
+                        <div class="swiper-wrapper">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                    
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+    var imgUrl = 'http://fortunechina.oss.aliyuncs.com/16mm/2014C40under40/2014C40under40.jpg';
+    var lineLink = 'http://www.cnblogs.com/softlover/archive/2012/11/25/2787429.html';
+    var descContent = "十佳民警评选开始了啊";
+    var shareTitle = "十佳民警评选";
+    var appid = 'wxc2576623838b7aa5';
+
+    function shareFriend() {
+        WeixinJSBridge.invoke('sendAppMessage',{
+            "appid": appid,
+            "img_url": imgUrl,
+            "img_width": "200",
+            "img_height": "200",
+            "link": lineLink,
+            "desc": descContent,
+            "title": shareTitle
+        }, function(res) {
+            //_report('send_msg', res.err_msg);
+        })
+    }
+    function shareTimeline() {
+        WeixinJSBridge.invoke('shareTimeline',{
+            "img_url": imgUrl,
+            "img_width": "200",
+            "img_height": "200",
+            "link": lineLink,
+            "desc": descContent,
+            "title": shareTitle
+        }, function(res) {
+               //_report('timeline', res.err_msg);
+        });
+    }
+    function shareWeibo() {
+        WeixinJSBridge.invoke('shareWeibo',{
+            "content": descContent,
+            "url": lineLink,
+        }, function(res) {
+            //_report('weibo', res.err_msg);
+        });
+    }
+    
+    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+            shareFriend();
+        });
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            shareTimeline();
+        });
+        // 分享到微博
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            shareWeibo();
+        });
+        
+    }, false);
+    </script>
+
+    <script>
+    (function(){
+        var selected = 0, max = 10;
+        // 每个人的简介分页处理
+        $('.detail').each(function(i,item){
+            var $box = $(item), txt = $box.find('.detail-txt').text() || '', txt = $.trim(txt),ret = [],html = [], id = 'policeman-detail-'+i, $swiper = $box.find('.swiper-wrapper');
+
+            ret = splitTxt(txt);
+
+            html.push('<div class="swiper-container" id="'+id+'">');
+            html.push('<div class="swiper-wrapper">');
+            
+            for(var j=0;j<ret.length;j++){
+                html.push('<div class="swiper-slide">');
+                html.push(ret[j]);
+                html.push('</div>');
+            }
+            html.push('</div></div>');
+
+            $swiper.append(html.join(''));
+            $box.append('<div class="pagination pagination-'+i+'" id="pagination-'+i+'"></div>');
+            new Swiper('#'+id,{
+                pagination: '.pagination-' + i
+            });
+        });
+        // 每页绑定滑动
+        var mySwiper = new Swiper('.container',{
+            onSlideChangeEnd:function(swiper){
+                console.log(swiper,swiper.activeIndex);
+                if(swiper.activeIndex>0){
+                    $('#nav').css('opacity', 1);
+                }else {
+                    $('#nav').css('opacity', 0);
+                }
+            },
+            mode:'vertical',
+            //pagination: '.pagination',
+            loop:false,
+            grabCursor: true
+            //paginationClickable: true
+        });
+        // mySwiper.swipeTo(index, speed, runCallbacks)
+        $('body').on('click','.policeman',function(e){
+            var target = $(e.currentTarget);
+            var index = 3 + target.index();
+            
+            mySwiper.swipeTo(index,500);
+        });
+        // 点击爱心
+        $('body').on('click','.love', function(e){
+            var currentTarget = $(e.currentTarget),
+                target = currentTarget.find('.heart'),
+                $vote = $('.vote-select');
+
+            if(target.hasClass('heart-select')){ 
+                selected--;
+                target.removeClass('heart-select');
+                $vote.text(selected);
+            }else {
+                if(selected<max){
+                    selected++;
+                    target.addClass('heart-select');
+                    $vote.text(selected);
+                }else {
+                    alert('只能选择'+max+'位!');
+                }
+            }
+            
+        });
+        // 确认投票
+        $('#vote-confirm').bind('click',function(){
+            if(selected === max){
+                alert('感谢您的参与！');
+            }else {
+                alert('请先选满'+max+'位');
+            }
+        });
+        // 确认投票
+        $('#back').bind('click',function(){
+            mySwiper.swipeTo(1,500);
+        });
+        
+        // 文字分割
+        function splitTxt(txt){
+            var pLen = 70, arr = txt.split(''),ret = [],txtArr = [],count = 0;
+            
+            for(var i = 0; i<arr.length; i++){
+                if(count==pLen){
+                    ret.push(txtArr.join(''));
+                    count = 0;
+                    txtArr = [];
+                }else{
+                    txtArr.push(arr[i]);
+                    count++;
+                }
+                //console.log('i',i,arr[i])
+            }
+            ret.push(txtArr.join(''));
+            
+            return ret;
+        }
+
+    })();
+
+        
+    </script>
+</body>
+</html>
